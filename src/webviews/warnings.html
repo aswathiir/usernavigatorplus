@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src {{cspSource}}; script-src 'nonce-{{nonce}}';">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{stylesUri}}" rel="stylesheet">
+    <title>Warnings Detected</title>
+</head>
+<body>
+    <h1>Warnings Detected</h1>
+    <p>Your code contains warnings you might want to review. While not critical, addressing warnings can improve code quality.</p>
+    
+    <div class="tip">
+        <p>Common warning types include:</p>
+        <ul>
+            <li>Deprecated API usage</li>
+            <li>Unused variables or imports</li>
+            <li>Potential type issues</li>
+            <li>Code style violations</li>
+        </ul>
+    </div>
+
+    <div>
+        <button onclick="executeCommand('workbench.action.problems.focus')">View Problems</button>
+        <button onclick="executeCommand('editor.action.marker.nextInFiles')" class="button-secondary">Go to Next Warning</button>
+    </div>
+
+    <script nonce="{{nonce}}">
+        const vscode = acquireVsCodeApi();
+        function executeCommand(command) {
+            vscode.postMessage({ command: 'execute', value: command });
+        }
+    </script>
+</body>
+</html>

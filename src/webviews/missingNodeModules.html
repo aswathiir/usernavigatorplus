@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src {{cspSource}}; script-src 'nonce-{{nonce}}';">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{stylesUri}}" rel="stylesheet">
+    <title>Missing node_modules</title>
+</head>
+<body>
+    <h1>Missing Dependencies</h1>
+    <p>This JavaScript/TypeScript project appears to be missing node_modules directory.</p>
+    
+    <div class="tip">
+        <p>To install dependencies:</p>
+        <div class="code-block">npm install</div>
+        <p>Or if using Yarn:</p>
+        <div class="code-block">yarn install</div>
+    </div>
+
+    <div>
+        <button onclick="executeCommand('npm-install.run')">Run npm install</button>
+        <button onclick="executeCommand('workbench.action.terminal.new')" class="button-secondary">Open Terminal</button>
+        <button onclick="openUrl('https://docs.npmjs.com/cli/install')" class="button-secondary">npm Docs</button>
+    </div>
+
+    <script nonce="{{nonce}}">
+        const vscode = acquireVsCodeApi();
+        function executeCommand(command) {
+            vscode.postMessage({ command: 'execute', value: command });
+        }
+        function openUrl(url) {
+            vscode.postMessage({ command: 'openUrl', value: url });
+        }
+    </script>
+</body>
+</html>

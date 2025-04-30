@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src {{cspSource}}; script-src 'nonce-{{nonce}}';">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{stylesUri}}" rel="stylesheet">
+    <title>Errors Detected</title>
+</head>
+<body>
+    <h1>Errors Detected</h1>
+    <p>Your code contains errors that need to be addressed. Here are some actions you can take:</p>
+    
+    <div class="tip">
+        <p>VS Code provides several tools to help you identify and fix errors:</p>
+        <ul>
+            <li>Problems panel (Ctrl+Shift+M) shows all errors and warnings</li>
+            <li>Hover over underlined code to see error details</li>
+            <li>Use Quick Fix (Ctrl+.) for some automatic fixes</li>
+        </ul>
+    </div>
+
+    <div>
+        <button onclick="executeCommand('workbench.action.problems.focus')">View Problems</button>
+        <button onclick="executeCommand('editor.action.marker.next')" class="button-secondary">Go to Next Error</button>
+        <button onclick="executeCommand('editor.action.quickFix')" class="button-secondary">Quick Fix</button>
+    </div>
+
+    <script nonce="{{nonce}}">
+        const vscode = acquireVsCodeApi();
+        function executeCommand(command) {
+            vscode.postMessage({ command: 'execute', value: command });
+        }
+    </script>
+</body>
+</html>
