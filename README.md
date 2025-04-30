@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# usernavigatorplus
- User Navigator Plus analyzes your workspace in order to provide software library suggestions based on your current context. Just tell Code Compass what you are looking for and it will suggest libraries that are compatible with your current development context.
-=======
-```markdown
 # User Navigator Plus for VS Code
 
 [![Version](https://img.shields.io/visual-studio-marketplace/v/aswathiir.usernavigatorplus)](https://marketplace.visualstudio.com/items?itemName=aswathiir.usernavigatorplus)
@@ -77,7 +72,6 @@ Add these to your VS Code `settings.json`:
   "userNavigatorPlus.notificationDelay": 3000
 }
 ```
-
 ## 📦 Extension Settings
 
 | Setting | Description | Default |
